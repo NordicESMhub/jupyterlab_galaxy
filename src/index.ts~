@@ -1,0 +1,58 @@
+import {
+  JupyterFrontEnd, JupyterFrontEndPlugin
+} from '@jupyterlab/application';
+
+import {
+  IDisposable
+} from '@phosphor/disposable';
+
+import {
+  ToolbarButton
+} from '@jupyterlab/apputils';
+
+import {
+  DocumentRegistry
+} from '@jupyterlab/docregistry';
+
+import {
+  NotebookPanel, INotebookModel
+} from '@jupyterlab/notebook';
+
+class SaveNotebookToGalaxyButtonExtension implements DocumentRegistry.IWidgetExtension<NotebookPanel, INotebookModel> {
+
+  createNew(panel: NotebookPanel, context: DocumentRegistry.IContext<INotebookModel>): IDisposable {
+    // Create the on-click callback for the toolbar button.
+    let saveToGalaxy = () => {
+      console.log('Save Notebook to Galaxy.');
+    };
+
+    // Create the toolbar button
+    let button = new ToolbarButton({
+      className: 'SaveNotebookToGalaxyButton',
+      iconClassName: 'fa fa-fast-forward',
+      onClick: saveToGalaxy,
+      tooltip: 'Save Notebook to Galaxy'
+    });
+
+    // Add the toolbar button to the notebook
+    panel.toolbar.insertItem(6, 'saveToGalaxy', button);
+
+    // The ToolbarButton class implements `IDisposable`, so the
+    // button *is* the extension for the purposes of this method.
+    return button;
+  }
+}
+/**
+ * Initialization data for the jupyterlab_galaxy extension.
+ */
+const extension: JupyterFrontEndPlugin<void> = {
+  id: 'jupyterlab_galaxy',
+  autoStart: true,
+  activate: (app: JupyterFrontEnd) => {
+    let buttonExtension = new SaveNotebookToGalaxyButtonExtension();
+    app.docRegistry.addWidgetExtension('Notebook', buttonExtension);
+    console.log('JupyterLab extension jupyterlab_galaxy is activated!');
+  }
+};
+
+export default extension;

@@ -1,0 +1,24 @@
+import setuptools
+
+install_requires = [
+    'requests>=2.9.1',
+    'galaxy_ie_helpers'
+]
+
+setuptools.setup(
+    name="jupyterlab_galaxy",
+    version="0.0.1",
+    author="Anne Fouilloux",
+    author_email="annefou@geo.uio.no",
+    description="Send notebook to Galaxy",
+    long_description="Communicate with Galaxy from JupyterLab",
+    long_description_content_type="text/markdown",
+    include_package_data=True,
+    url="https://github.com/NordicESMHub/jupyterlab_galaxy",
+    packages=setuptools.find_packages(),
+    classifiers=(
+        "Programming Language :: Python :: 3",
+        "License :: OSI Approved :: MIT License",
+        "Operating System :: OS Independent",
+    ),
+)
