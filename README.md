@@ -9,7 +9,9 @@ Add two buttons to communicate with Galaxy from JupyterLab interactive environme
 
 * JupyterLab >= 1.0
 
-## Install
+## Install (when published)
+
+It is not possible yet but in the future we would like to be able to install this jupyterLab extension with:
 
 ```bash
 jupyter labextension install jupyterlab_galaxy

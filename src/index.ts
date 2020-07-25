@@ -4,11 +4,11 @@ import {
 
 import {
   IDisposable
-} from '@phosphor/disposable';
+} from '@lumino/disposable';
 
 import {
   ReadonlyJSONObject
-} from "@phosphor/coreutils";
+} from "@lumino/coreutils";
 
 import {
   ToolbarButton
@@ -40,7 +40,6 @@ class SaveNotebookToGalaxyButtonExtension implements DocumentRegistry.IWidgetExt
     // Create the toolbar button
     let button = new ToolbarButton({
       className: 'SaveNotebookToGalaxyButton',
-      iconClassName: 'fa fa-arrow-circle-up',
       onClick: saveToGalaxy,
       tooltip: 'Save Notebook to Galaxy---'
     });
